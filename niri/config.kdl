@@ -1,0 +1,12 @@
+environment {
+    QT_QPA_PLATFORMTHEME "qt6ct"
+}
+
+spawn-at-startup "noctalia"
+
+include "noctalia.kdl"
+include "inputs.kdl"
+include "outputs.kdl"
+include "binds.kdl"
+include "layout.kdl"
+include "animations.kdl"
