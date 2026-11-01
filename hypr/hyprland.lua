@@ -19,10 +19,6 @@ require("WindowsWorkspaces")
 require("Binds")
 
 
-
-
-
-
 -----------------
 -----------------
 ---- AUTOSTART ----
@@ -35,6 +31,10 @@ require("Binds")
 --
 hl.on("hyprland.start", function () 
 	hl.exec_cmd("noctalia")
+	hl.exec_cmd("mcontrolcenter")
+	-- hl.exec_cmd("hyprpaper")
+	hl.dispatch(hl.dsp.focus({ workspace = "1" }))
+	
 end)
 
 

@@ -1,0 +1,16 @@
+environment {
+    QT_QPA_PLATFORMTHEME "qt6ct"
+}
+
+spawn-at-startup "noctalia"
+// spawn-at-startup "mako"
+
+include "noctalia.kdl"
+include "noctaliaoverwrite.kdl"
+include "inputs.kdl"
+include "outputs.kdl"
+include "binds.kdl"
+include "layout.kdl"
+include "animations.kdl"
+
+include "noctalia.kdl"

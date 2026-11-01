@@ -1,9 +1,0 @@
-[mgr]
-prepend_keymap = [
-    { on = "p", run = "plugin ucp paste notify", desc = "Paste" },
-    { on = "y", run = "plugin ucp copy notify", desc = "Copy" },
-	{ on = ["C"], run = "plugin ouch", desc = "Compress with ouch" },
-	{ on = ["R","b"], run = "plugin recycle-bin", desc = "Open Recycle Bin menu" },
-	{ on = [ "q" ], run = "plugin autosession -- save-and-quit", desc = "Save session and quit" },
-]
-

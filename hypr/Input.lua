@@ -3,6 +3,13 @@
 ---------------
 
 hl.config({
+    cursor = {
+	no_warps = true,
+	no_hardware_cursors = true,
+  },
+    xwayland = {
+	force_zero_scaling = true,
+  },
     input = {
         kb_layout  = "us",
         kb_variant = "",
@@ -11,7 +18,7 @@ hl.config({
         kb_rules   = "",
 
         follow_mouse = 1,
-
+	mouse_refocus = false,
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
         touchpad = {

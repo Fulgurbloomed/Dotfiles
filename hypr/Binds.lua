@@ -5,24 +5,59 @@
 -- Set programs that you use
 local terminal    = "kitty"
 local fileManager = "nautilus"
-local menu        = "hyprlauncher"
+local menu        = "fuzzel"
+local mainMod	  = "SUPER"
+local ipc 	  = "noctalia msg "
 
+-- Core binds
+hl.bind(mainMod .. "+Space", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
+-- hl.bind(mainMod .. "+S", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center"))
+hl.bind(mainMod .. "+comma", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
+hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher"))
+hl.bind("Print", hl.dsp.exec_cmd(ipc .. "screenshot-region"))
+hl.bind(mainMod .. "+X", hl.dsp.exec_cmd(ipc .. "panel-toggle session"))
+
+-- Media keys
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. "volume-up"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. "volume-down"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. "volume-mute"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. "brightness-up"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. "brightness-down"))
+
+-- Noctalia Settings
+hl.window_rule({
+    match = { class = "dev.noctalia.Noctalia" },
+    float = true,
+    size = { 1080, 920 },
+})
 
 ----- KEYBINDINGS ----
 -------------------
-local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd("kitty -e yazi"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("zen-browser"))
-hl.bind(mainMod .. " + F", hl.dsp.layout("fit active"))
-hl.bind(mainMod .. " + SHIFT + F", hl.dsp.layout("fit expand"))
-hl.bind(mainMod .. " + D", hl.dsp.layout("colresize 0.5"))
-hl.bind(mainMod .. " + bracketleft", hl.dsp.layout("consume_or_expel prev"))
-hl.bind(mainMod .. " + bracketright", hl.dsp.layout("consume_or_expel next"))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("kitty -e rmpc"))
 
+-- hl.bind(mainMod .. " + F", hl.dsp.layout("fit active"))
+-- hl.bind(mainMod .. " + SHIFT + F", hl.dsp.layout("fit expand"))
+-- hl.bind(mainMod .. " + D", hl.dsp.layout("colresize 0.5"))
+-- hl.bind(mainMod .. " + bracketleft", hl.dsp.layout("consume_or_expel prev"))
+-- hl.bind(mainMod .. " + bracketright", hl.dsp.layout("consume_or_expel next"))
 
+-- Fullscreen / maximize (replaces "fit active" / "fit expand")
+hl.bind(mainMod .. " + F",         hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
+
+-- Move windows within the dwindle tree
+hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.move({ direction = "down" }))
+
+-- Swap with sibling (dwindle only)
+hl.bind(mainMod .. " + D", hl.dsp.layout("swapsplit"))
 
 
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
@@ -30,7 +65,7 @@ local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+-- hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 
